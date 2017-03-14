@@ -1,6 +1,19 @@
-#topasm-ssr
+# DDuke 个人博客
 
-## 一些新的知识点
+```
+使用的技术栈
+vue2 + vuex + vue-router + webpack2
+
+```
+
+# 部分说明
+
+```
+博客中用到的所有icon都来着 iconfont
+
+```
+
+# 一些新的知识点
 
 ```
 [store](https://github.com/nbubna/store)
@@ -9,7 +22,10 @@ store.js 是一个兼容所有浏览器的 LocalStorage 包装器，不需要借
 [EventSource](https://github.com/amvtek/EventSource)
 EventSource 对象用于接收服务器发送事件通知  为了低浏览器的兼容 eventsource-polyfill
 
-[postcss](https://github.com/postcss/postcss) [简单介绍](http://www.w3cplus.com/PostCSS/postcss-deep-dive-what-you-need-to-know.html) [简写与速写](http://www.w3cplus.com/PostCSS/postcss-deep-dive-shortcuts-and-shorthand.html)
+[postcss](https://github.com/postcss/postcss)
+[简单介绍](http://www.w3cplus.com/PostCSS/postcss-deep-dive-what-you-need-to-know.html)
+[简写与速写](http://www.w3cplus.com/PostCSS/postcss-deep-dive-shortcuts-and-shorthand.html)
+[插件目录](http://postcss.parts/)
 PostCSS 是一个 CSS 后 处理器，它使用 JavaScript 插件来转换 CSS。就它本身而言，PostCSS 不会对你的 CSS 做任何处理；你需要添加一些 插件 才能开始使用。这使得它不仅仅具有模块化，而且非常强大。
 
 ```

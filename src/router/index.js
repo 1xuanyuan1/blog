@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Meta from 'vue-meta'
+// import Meta from 'vue-meta'
 // import cookies from 'js-cookie'
 
 // import {inBrowser} from '../utils'
 
 import Hello from 'components/Hello.vue'
+import AppMain from 'components/AppMain.vue'
 
 Vue.use(VueRouter)
-Vue.use(Meta)
+// Vue.use(Meta)
 
 const scrollBehavior = to => {
   const position = {}
@@ -36,7 +37,7 @@ const router = new VueRouter({
   // base: __dirname,
   scrollBehavior,
   routes: [
-    { name: 'index', path: '/', component: Hello },
+    { name: 'index', path: '/', component: AppMain },
     { name: 'Home', path: '/home', component: Hello },
     { path: '*', redirect: '/home' }
   ]

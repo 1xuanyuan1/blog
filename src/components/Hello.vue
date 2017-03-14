@@ -1,6 +1,9 @@
 <template>
   <div class="">
     我是首页
+    <a href="#!" class="waves-effect waves-circle waves-light btn-floating secondary-content">
+      <i class="material-icons">add</i>
+    </a>
     <div class="box">
       <div class="item">
         tt

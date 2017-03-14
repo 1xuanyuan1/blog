@@ -6,6 +6,8 @@ import { sync } from 'vuex-router-sync'
 
 sync(store, router)
 
+import 'assets/iconfont/iconfont.css'
+
 const app = new Vue({
   router,
   store,
