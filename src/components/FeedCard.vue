@@ -18,7 +18,7 @@
     </div>
     <footer class="card-footer">
       <a class="card-footer-item" v-for="item in operation">
-        <i class="iconfont" :class="`icon-${item.type}`"></i>{{item.name}}
+        <i class="iconfont" :class="`icon-${item.type}`"></i> 0 {{item.name}}
       </a>
     </footer>
   </div>
@@ -46,9 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$base-padding: 24px;
-$border-color: #eef2f2;
-$border-radius: 8px;
+@import "~scss/base.scss";
 .card {
   border-radius: $border-radius;
   margin-top: $base-padding;

@@ -6,6 +6,7 @@
       </div>
       <div class="column main-right">
         <topics-card></topics-card>
+        <trending-card></trending-card>
       </div>
     </div>
   </div>
@@ -14,10 +15,12 @@
 <script>
 import FeedCard from 'components/FeedCard'
 import TopicsCard from 'components/TopicsCard'
+import TrendingCard from 'components/TrendingCard'
 export default {
   components: {
     FeedCard,
-    TopicsCard
+    TopicsCard,
+    TrendingCard
   }
 }
 </script>

@@ -21,10 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$base-padding: 24px;
-$border-radius: 8px;
-$border-color: #eef2f2;
-$base-color: #00d1b2;
+@import "~scss/base.scss";
 .card {
   border-radius: $border-radius;
   margin-top: $base-padding;
@@ -33,6 +30,19 @@ $base-color: #00d1b2;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .card-item-left {
+      display: flex;
+      align-items: center;
+      .icon-topics{
+        font-size: 40px;
+        margin-right: 20px;
+        color: rgba(237, 70, 86, 0.5);
+      }
+    }
+    .icon-right{
+      font-size: 25px;
+      color: #ccc;
+    }
     &:hover {
       cursor: pointer;
       .title {
@@ -41,22 +51,12 @@ $base-color: #00d1b2;
       .icon-right{
         color: #4a4a4a;
       }
-    }
-    &:not(:last-child) {
-      border-bottom: 1px solid $border-color;
-    }
-    .card-item-left {
-      display: flex;
-      align-items: center;
-      .icon-topics{
-        font-size: 40px;
-        margin-right: 20px;
+      .card-item-left .icon-topics{
         color: #ed4656;
       }
     }
-    .icon-right{
-      font-size: 25px;
-      color: #ccc;
+    &:not(:last-child) {
+      border-bottom: 1px solid $border-color;
     }
   }
 }
