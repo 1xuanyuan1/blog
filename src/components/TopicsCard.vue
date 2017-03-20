@@ -5,7 +5,8 @@
         <i class="iconfont icon-topics"></i>
         <div class="card-item-content">
           <p class="title is-5"><strong>Vue</strong></p>
-          <p class="subtitle is-6">3篇文章</p>
+          <p class="subtitle is-6" v-if="i % 2 === 0">7篇文章</p>
+          <p class="subtitle is-6" v-else>10篇文章</p>
         </div>
       </div>
       <div class="card-item-right">
@@ -17,6 +18,9 @@
 
 <script>
 export default {
+  mounted () {
+    console.log('test111aaggg')
+  }
 }
 </script>
 

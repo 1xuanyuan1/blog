@@ -73,8 +73,8 @@ export default {
 
 <style lang="scss" scope>
 .logo img{
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 }
 </style>
