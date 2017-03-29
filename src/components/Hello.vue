@@ -1,51 +1,35 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class="">
+    我是首页
+    <a href="#!" class="waves-effect waves-circle waves-light btn-floating secondary-content">
+      <i class="material-icons">add</i>
+    </a>
+    <div class="box">
+      <div class="item">
+        tt
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'hello',
-    data () {
-        return {
-            msg: 'Welcome to Your Vue.js App'
-        }
-    }
 }
 </script>
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+<style lang="scss">
+$baseColor: #3b99fc;
+.box{
+  width: 100px;
+  height: 200px;
+  background: $baseColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .item {
+    width: 30px;
+    height: 60px;
+    background: yellow;
+  }
 }
 </style>

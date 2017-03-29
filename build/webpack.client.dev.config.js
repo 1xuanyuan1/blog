@@ -8,8 +8,8 @@ module.exports = {
             test: /\.css$/,
             loader: 'style-loader!css-loader!postcss-loader'
         }, {
-            test: /\.less$/,
-            loader: 'style-loader!css-loader!postcss-loader!less-loader'
+            test: /\.scss$/,
+            loader: 'style-loader!css-loader!postcss-loader!sass-loader'
         }, {
             test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
             loader: 'url-loader',

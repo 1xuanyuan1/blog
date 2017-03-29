@@ -23,11 +23,20 @@ var config = merge(base, {
     module: {
         rules: [{
             test: /\.vue$/,
-            loader: 'vue-loader'
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                css: 'ignored-loader',
+                scss: 'ignored-loader'
+              }
+            }
         }, {
             test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
             loader: 'url-loader',
             query
+        }, {
+            test: /\.(css|scss|sass|postcss)$/,
+            loader: 'ignored-loader'
         }]
     },
     resolve: {

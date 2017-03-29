@@ -1,17 +1,46 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 // import Meta from 'vue-meta'
-import Hello from '~components/Hello'
+// import cookies from 'js-cookie'
 
-Vue.use(Router)
+// import {inBrowser} from '../utils'
+
+import Hello from 'components/Hello'
+import AppMain from 'components/AppMain'
+
+Vue.use(VueRouter)
 // Vue.use(Meta)
-export default new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'Hello',
-            component: Hello
-        }
-    ]
+
+const scrollBehavior = to => {
+  const position = {}
+  if (to.hash) {
+    position.selector = to.hash
+  }
+  if (to.matched.some(asm => asm.meta.scrollToTop)) {
+    position.x = 0
+    position.y = 0
+  }
+  return position
+}
+
+// const guardRoute = (to, from, next) => {
+//   var token = cookies.get('user') || !inBrowser
+//   if (!token) {
+//     next('/')
+//   } else {
+//     next()
+//   }
+// }
+
+const router = new VueRouter({
+  mode: 'history',
+  // base: __dirname,
+  scrollBehavior,
+  routes: [
+    { name: 'index', path: '/', component: AppMain },
+    { name: 'Home', path: '/home', component: Hello },
+    { path: '*', redirect: '/home' }
+  ]
 })
+
+export default router

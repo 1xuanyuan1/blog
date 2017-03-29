@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <navbar></navbar>
+    <transition name="fade" mode="out-in">
+      <router-view class="view"></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
+import Navbar from 'components/Navbar'
 export default {
-    name: 'app'
+  components: {
+    Navbar
+  }
 }
 </script>
 
-<style lang="css">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+// @import '~animate.css';
+@import '~bulma';
+body{
+  background: #ebf0f0;
 }
-*{margin: 0; padding: 0;}
-*{box-sizing: border-box;}
-*::before{box-sizing: border-box;}
-*::after{box-sizing: border-box;}
+.iconfont{
+  margin-right: 8px;
+}
 </style>
