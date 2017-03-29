@@ -1,5 +1,1 @@
 build/*.js
-config/*.js
-src/filters/*.js
-src/server-entry.js
-src/client-entry.js

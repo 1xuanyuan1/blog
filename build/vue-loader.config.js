@@ -1,35 +1,17 @@
-// const autoprefixer = require('autoprefixer') // 自动加前缀
-// const px2rem = require('postcss-px2rem') // px to rem
-// const browserslist = require('browserslist')
-// const precss = require('precss') // 一种css预处理器
-//
-// // const utils = require('./utils')
-// //
-// // var options = {
-// //     sourceMap: true
-// // }
-// // if (process.env.NODE_ENV === 'production') {
-// //     options = {
-// //         sourceMap: false,
-// //         extract: true,
-// //     }
-// // }
-//
-// module.exports = {
-//   preserveWhitespace: false,
-//   // loaders: utils.cssLoaders(options)
-//   postcss: [
-//     autoprefixer({browsers: browserslist('last 2 version, > 0.1%')}),
-//     px2rem({remUnit: 34.5}),
-//     precss()
-//   ]
-// }
-var utils = require('./utils')
-var isProduction = process.env.NODE_ENV === 'production'
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+var loaders = {}
+if (process.env.NODE_ENV === 'production') {
+    loaders = {
+        css: 'vue-style-loader!css-loader!postcss-loader',
+        less: 'vue-style-loader!css-loader!postcss-loader!less-loader'
+    }
+} else {
+    loaders = {
+        css: ExtractTextPlugin.extract({fallback: 'vue-style-loader', use: 'css-loader!postcss-loader'}),
+        less: ExtractTextPlugin.extract({fallback: 'vue-style-loader', use: 'css-loader!postcss-loader!less-loader'})
+    }
+}
 module.exports = {
-  loaders: utils.cssLoaders({
-    sourceMap: !isProduction,
-    extract: false
-  })
+    loaders: loaders
 }

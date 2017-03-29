@@ -2,4 +2,7 @@
 node_modules/
 dist/
 npm-debug.log
-yarn-error.log
+.vscode/
+.idea/
+admin.lock
+server/config/secret.js

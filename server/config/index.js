@@ -1,23 +1,7 @@
-var path = require('path')
+require('../utils').creatSecret()
+const secret = require('./secret.js')
 
-module.exports = {
-  build: {
-
-  },
-  dev: {
-    app: {
-      name:'Duke',
-      port: 3000,
-      adminPath: '/api' // 后台路径
-    },
-    debug:false,
-    env:'production',
-    mongoConfig: { // 数据库配置
-      url: 'mongodb://localhost:27017/blog',
-      opts:{
-        user:'',
-        pass:''
-      }
-    }
-  }
-}
+// MD5 加密前缀, 如用户的密码是 123456, 存到数据库将会变成 md5('!@#$%(*&^)' + '123456')
+exports.md5Pre = "!@#$%(*&^)"
+exports.secretServer = secret.secretServer
+exports.secretClient = secret.secretServer

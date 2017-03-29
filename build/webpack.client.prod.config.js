@@ -1,23 +1,33 @@
+const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+const srcDir = path.resolve(__dirname, '../dist/').replace(/\\/g, "\/")
+const prefixMulti = {}
+prefixMulti[srcDir] = ''
 
 module.exports = {
     devtool: false,
+    module: {
+        rules: [{
+            test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
+            loader: 'url-loader',
+            query: {
+                limit: 10000,
+                name: 'static/img/[name].[hash:7].[ext]'
+            }
+        }, {
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader'])
+        },  {
+            test: /\.less/,
+            loader: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'less-loader'])
+        }]
+    },
     plugins: [
-        // webpack-bundle-analyzer 来分析 Webpack 生成的包体组成并且以可视化的方式反馈给开发者
-        new BundleAnalyzerPlugin(),
         new ExtractTextPlugin('static/css/[name].[hash:7].css'),
-        // Compress extracted CSS. We are using this plugin so that possible
-        // duplicated CSS from different components can be deduped.
-        new OptimizeCSSPlugin(),
-        new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-          'process.env.VUE_ENV': '"client"'
-        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function(module, count) {
@@ -37,17 +47,26 @@ module.exports = {
             minimize: true
         }),
         new SWPrecachePlugin({
-            cacheId: 'vue-hn',
+            cacheId: 'mmf-blog-vue2-ssr',
             filename: 'service-worker.js',
             dontCacheBustUrlsMatching: /./,
-            staticFileGlobsIgnorePatterns: [/server\.html$/, /\.map$/]
+            staticFileGlobsIgnorePatterns: [/server\.html$/, /admin\.html$/, /\.map$/],
+            stripPrefixMulti: prefixMulti
         }),
         new HtmlWebpackPlugin({
             chunks: [
                 'manifest', 'vendor', 'app',
             ],
-            filename: 'main.html',
-            template: 'src/index.template.html',
+            filename: 'server.html',
+            template: 'src/template/server.html',
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            chunks: [
+                'manifest', 'vendor', 'admin',
+            ],
+            filename: 'admin.html',
+            template: 'src/template/admin.html',
             inject: true,
         })
     ]
