@@ -1,25 +1,17 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './admin.vue'
+import App from './App.vue'
 import store from './store'
-import router from './router/admin'
+import router from './router'
 import { sync } from 'vuex-router-sync'
-import * as filters from './filters'
-
-import "./assets/css/hljs/googlecode.css"
-import "./assets/css/style.css"
-import "./assets/less/backend.less"
-import "toastr/build/toastr.css"
-import "nprogress/nprogress.css"
 
 sync(store, router)
 
-Object.keys(filters).forEach(key => {
-    Vue.filter(key, filters[key])
-})
-
+/* eslint-disable no-new */
 const app = new Vue({
+    el: '#app',
     router,
-    store,
     render: h => h(App)
 })
 

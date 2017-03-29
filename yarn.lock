@@ -2588,6 +2588,10 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "http://registry.npm.taobao.org/ieee754/download/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
+ignore-loader@^0.1.2:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/ignore-loader/download/ignore-loader-0.1.2.tgz#d81f240376d0ba4f0d778972c3ad25874117a463"
+
 ignore@^3.2.0:
   version "3.2.6"
   resolved "http://registry.npm.taobao.org/ignore/download/ignore-3.2.6.tgz#26e8da0644be0bb4cb39516f6c79f0e0f4ffe48c"
@@ -5154,6 +5158,13 @@ vue-ssr-webpack-plugin@^1.0.2:
 vue-style-loader@^2.0.0:
   version "2.0.4"
   resolved "http://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-2.0.4.tgz#4fc19e18bf162225338aac3b17d0fd0e1cfb7439"
+  dependencies:
+    hash-sum "^1.0.2"
+    loader-utils "^1.0.2"
+
+vue-style-loader@^2.0.5:
+  version "2.0.5"
+  resolved "http://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-2.0.5.tgz#f0efac992febe3f12e493e334edb13cd235a3d22"
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"

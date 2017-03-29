@@ -1,4 +1,4 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/mmfblog_v2')
+mongoose.connect('mongodb://localhost/dduke_blog')
 mongoose.Promise = global.Promise
 module.exports = mongoose

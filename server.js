@@ -117,8 +117,8 @@ app.get(['/', '/category/:id', '/search/:qs', '/article/:id', '/about', '/trendi
 
     const htmlStream = new HTMLStream({ template: frontend, context })
     htmlStream.on('beforeStart', () => {
-        const meta = context.meta.inject()
-        context.head = (context.head || '') + meta.title.text()
+        // const meta = context.meta.inject()
+        // context.head = (context.head || '') + meta.title.text()
     })
     renderer.renderToStream(context)
         .on('error', errorHandler)

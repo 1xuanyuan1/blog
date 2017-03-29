@@ -47,7 +47,7 @@ module.exports = {
             minimize: true
         }),
         new SWPrecachePlugin({
-            cacheId: 'mmf-blog-vue2-ssr',
+            cacheId: 'dduke-blog',
             filename: 'service-worker.js',
             dontCacheBustUrlsMatching: /./,
             staticFileGlobsIgnorePatterns: [/server\.html$/, /admin\.html$/, /\.map$/],

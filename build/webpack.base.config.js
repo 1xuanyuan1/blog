@@ -9,7 +9,7 @@ const config = {
         hints: isProd ? 'warning' : false
     },
     entry: {
-        app: './src/entry-client.js',
+        app: './src/client-entry.js',
         admin: './src/admin.js',
         vendor: ['./src/polyfill']
     },
@@ -32,6 +32,7 @@ const config = {
             '~pages': path.resolve(__dirname, '../src/pages'),
             '~store': path.resolve(__dirname, '../src/store'),
             '~utils': path.resolve(__dirname, '../src/utils'),
+            'assets': path.resolve(__dirname, '../src/assets'),
             'api-config': path.resolve(__dirname, '../src/api/config-client')
         }
     },
