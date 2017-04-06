@@ -1,4 +1,4 @@
 module.exports = {
-    api: '/api/',
-    timeout: 30000
+  api: '/api/',
+  timeout: 30000
 }

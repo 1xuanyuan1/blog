@@ -1,12 +1,11 @@
 <template lang="html">
   <div class="card">
-    <div class="card-item" v-for="i in 10" :key="i">
+    <div class="card-item" v-for="item in list" :key="item._id" @click="skip(item._id)">
       <div class="card-item-left">
         <i class="iconfont icon-topics"></i>
         <div class="card-item-content">
-          <p class="title is-5"><strong>Vue</strong></p>
-          <p class="subtitle is-6" v-if="i % 2 === 0">7篇文章</p>
-          <p class="subtitle is-6" v-else>10篇文章</p>
+          <p class="title is-5"><strong>{{item.cate_name}}</strong></p>
+          <p class="subtitle is-6">{{item.cate_num}}篇文章</p>
         </div>
       </div>
       <div class="card-item-right">
@@ -17,9 +16,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  name: 'topics-card',
+  computed: {
+    ...mapGetters({
+      list: 'global/category/categoryList'
+    })
+  },
   mounted () {
-    console.log('test111aaggg')
+    // console.log('test111aaggg')
+  },
+  methods: {
+    skip (id) {
+      console.log(id)
+      this.$router.push({ name: 'category', params: { id } })
+    }
   }
 }
 </script>

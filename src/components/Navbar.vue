@@ -7,12 +7,14 @@
       </a>
     </div>
     <div class="nav-center">
-      <a  class="nav-item is-tab is-hidden-mobile"
+      <router-link  class="nav-item is-tab is-hidden-mobile"
           v-for="item in menus"
+          :to="item.path"
+          :key="item.icon"
           @click="changeMenu(item)"
           :class="{'is-active': item.path === activeMenu}">
         <i class="iconfont" :class="`icon-${item.icon}`"></i>{{item.name}}
-      </a>
+      </router-link>
     </div>
     <span class="nav-toggle" :class="{'is-active': isShowMenu}" @click="showMenu">
       <span></span>
@@ -20,12 +22,14 @@
       <span></span>
     </span>
     <div class="nav-right nav-menu" :class="{'is-active': isShowMenu}">
-      <a  class="nav-item is-tab is-hidden-tablet"
+      <router-link  class="nav-item is-tab is-hidden-tablet"
           v-for="item in menus"
+          :to="item.path"
+          :key="item.icon"
           @click="changeMenu(item)"
           :class="{'is-active': item.path === activeMenu}">
         <i class="iconfont" :class="`icon-${item.icon}`"></i>{{item.name}}
-      </a>
+      </router-link>
       <a class="nav-item is-tab">
         <figure class="image logo" style="margin-right: 8px;">
           <img src="~assets/img/logo.png">
@@ -39,33 +43,35 @@
 
 <script>
 export default {
+  name: 'navbar',
   data () {
     return {
       isShowMenu: false,
-      activeMenu: 'index',
       menus: [
         {
           name: '首页',
           icon: 'index',
-          path: 'index'
+          path: '/'
         }, {
           name: '热门',
           icon: 'trending',
-          path: 'trending'
+          path: '/trending/visit'
         }, {
           name: '关于',
           icon: 'about',
-          path: 'about'
+          path: '/about'
         }
       ]
+    }
+  },
+  computed: {
+    activeMenu () {
+      return this.$route.fullPath
     }
   },
   methods: {
     showMenu () {
       this.isShowMenu = !this.isShowMenu
-    },
-    changeMenu (item) {
-      this.activeMenu = item.path
     }
   }
 }

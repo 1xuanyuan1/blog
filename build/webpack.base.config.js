@@ -26,13 +26,15 @@ const config = {
             path.join(__dirname, '../node_modules')
         ],
         alias: {
-            '~src': path.resolve(__dirname, '../src'),
-            '~api': path.resolve(__dirname, '../src/api/index-client'),
-            'components': path.resolve(__dirname, '../src/components'),
-            'store': path.resolve(__dirname, '../src/store'),
-            'scss': path.resolve(__dirname, '../src/scss'),
-            'assets': path.resolve(__dirname, '../src/assets'),
-            'api-config': path.resolve(__dirname, '../src/api/config-client')
+          '~src': path.resolve(__dirname, '../src'),
+          '~api': path.resolve(__dirname, '../src/api/index-client'),
+          'components': path.resolve(__dirname, '../src/components'),
+          'views': path.resolve(__dirname, '../src/views'),
+          'utils': path.resolve(__dirname, '../src/utils'),
+          'store': path.resolve(__dirname, '../src/store'),
+          'scss': path.resolve(__dirname, '../src/scss'),
+          'assets': path.resolve(__dirname, '../src/assets'),
+          'api-config': path.resolve(__dirname, '../src/api/config-client')
         }
     },
     resolveLoader: {

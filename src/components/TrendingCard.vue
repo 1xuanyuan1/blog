@@ -4,20 +4,20 @@
       热门文章
     </div>
     <div class="card-list">
-      <div class="card-item" v-for="i in 10" :key="i">
+      <div class="card-item" v-for="(item, i) in list" :key="i">
         <div class="rank-num">
-          {{i}}
+          {{i + 1}}
         </div>
         <div class="trending-content">
           <div class="trending-title title is-5">
-            <strong>Vue2 SSR 的优化之旅</strong>
+            <strong>{{item.title}}</strong>
           </div>
           <div class="trending-menu">
             <div class="trending-menu-item">
-              <i class="iconfont icon-praise"></i> <small>0</small>
+              <i class="iconfont icon-praise"></i> <small>{{item.like}}</small>
             </div>
             <div class="trending-menu-item">
-              <i class="iconfont icon-comments"></i> <small>0</small>
+              <i class="iconfont icon-comments"></i> <small>{{item.comment_count}}</small>
             </div>
           </div>
         </div>
@@ -27,7 +27,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+  name: 'trending-card',
+  computed: {
+    ...mapGetters({
+      list: 'frontend/article/trending'
+    })
+  }
 }
 </script>
 

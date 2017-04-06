@@ -1,42 +1,64 @@
 <template lang="html">
-  <div class="card">
-    <header class="card-header">
-      <p class="card-header-title">
-        来着分类<strong>Vue</strong>
-      </p>
-      <p class="card-header-time">
-        2017-03-14 17:34:09
-      </p>
-    </header>
-    <a class="card-title">
-      Vue SSR, 在服务端请求数据时怎么带 cookies?
-    </a>
-    <div class="card-content">
-      <div class="content">
-        cookies 都是存在浏览器端, 而 ssr 时, 是在服务器请求的接口, 默认情况肯定带不了浏览器的 cookies, 然而一些登录后的页面数据又必须要 cookies, 这可怎么办 ### 1. 通过 express 取得 cookies 在 server.js 上引入 cookies 解析中间件
-      </div>
+  <div class="feeds">
+    <div class="card" v-if="!lists.path">
+      <loading></loading>
     </div>
-    <footer class="card-footer">
-      <a class="card-footer-item" v-for="item in operation">
-        <i class="iconfont" :class="`icon-${item.type}`"></i> 0 {{item.name}}
+    <div class="card" v-for="(item, i) in feedList" :key="i">
+      <header class="card-header">
+        <p class="card-header-title">
+          来着分类<strong>{{item.category_name}}</strong>
+        </p>
+        <p class="card-header-time">
+          {{item.creat_date}}
+        </p>
+      </header>
+      <a class="card-title">
+        {{item.title}}
       </a>
-    </footer>
+      <div class="card-content">
+        <div class="content">
+          {{item.content}}
+        </div>
+      </div>
+      <footer class="card-footer">
+        <a class="card-footer-item" v-for="it in operation">
+          <i class="iconfont" :class="`icon-${it.type}`"></i> {{item[it.key]}} {{it.name}}
+        </a>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import Loading from 'components/Loading'
 export default {
+  name: 'article-card',
+  computed: {
+    ...mapGetters({
+      lists: 'frontend/article/articleList'
+    }),
+    feedList () {
+      return this.lists.data
+    }
+  },
+  components: {
+    Loading
+  },
   data () {
     return {
       operation: [
         {
           type: 'praise',
+          key: 'like',
           name: '赞'
         }, {
           type: 'comments',
+          key: 'comment_count',
           name: '评论'
         }, {
           type: 'browse',
+          key: 'visit',
           name: '浏览'
         }
       ]

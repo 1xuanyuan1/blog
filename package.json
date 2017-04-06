@@ -1,5 +1,5 @@
 {
-  "name": "mmf-blog-vue2-ssr",
+  "name": "dduke-blog",
   "version": "2.0.0",
   "description": "A Vue.js project wuth vue 2.0, vue-router and vuex for server side rendering.",
   "keywords": [
@@ -44,6 +44,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -59,10 +60,12 @@
     "css-loader": "^0.27.3",
     "ejs": "^2.5.6",
     "eslint": "^3.18.0",
-    "eslint-config-lcy-vue": "^1.0.6",
     "eslint-config-standard": "^7.1.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^2.0.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
+    "eslint-plugin-vuefix": "^0.1.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.15.0",
     "express-http-proxy": "^0.11.0",
@@ -98,5 +101,7 @@
   },
   "engines": {
     "node": "5.x"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/1xuanyuan1/blog.git"
 }
