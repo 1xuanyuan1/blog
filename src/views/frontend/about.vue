@@ -17,6 +17,7 @@ import AboutCard from 'components/frontend/AboutCard'
 const fetchInitialData = async (store) => {
     await store.dispatch('frontend/article/getTrending')
 }
+
 export default {
   name: 'frontend-about',
   prefetch: fetchInitialData,
