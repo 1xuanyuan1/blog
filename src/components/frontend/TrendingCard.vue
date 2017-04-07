@@ -4,7 +4,7 @@
       热门文章
     </div>
     <div class="card-list">
-      <div class="card-item" v-for="(item, i) in list" :key="i">
+      <div class="card-item" v-for="(item, i) in list" :key="i" @click="skip(item._id)">
         <div class="rank-num">
           {{i + 1}}
         </div>
@@ -34,6 +34,11 @@ export default {
     ...mapGetters({
       list: 'frontend/article/trending'
     })
+  },
+  methods: {
+    skip (id) {
+      this.$router.push({ name: 'article', params: {id} })
+    }
   }
 }
 </script>

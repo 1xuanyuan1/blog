@@ -2,9 +2,9 @@
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item">
+      <router-link class="nav-item" to="/">
         <img src="~assets/img/nav-logo.png" alt="logo">
-      </a>
+      </router-link>
     </div>
     <div class="nav-center">
       <router-link  class="nav-item is-tab is-hidden-mobile"
@@ -30,11 +30,17 @@
           :class="{'is-active': item.path === activeMenu}">
         <i class="iconfont" :class="`icon-${item.icon}`"></i>{{item.name}}
       </router-link>
-      <a class="nav-item is-tab">
+      <a class="nav-item" v-if="username">
         <figure class="image logo" style="margin-right: 8px;">
           <img src="~assets/img/logo.png">
         </figure>
-        Log out
+        {{username}}
+      </a>
+      <a class="nav-item" v-else @click="toggleLogin(true)">
+        <figure class="image logo" style="margin-right: 8px;">
+          <img src="~assets/img/logo.png">
+        </figure>
+        登录
       </a>
     </div>
   </div>
@@ -42,6 +48,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import cookies from 'js-cookie'
 export default {
   name: 'navbar',
   data () {
@@ -67,9 +75,15 @@ export default {
   computed: {
     activeMenu () {
       return this.$route.fullPath
+    },
+    username () {
+      return cookies.get('username') || ''
     }
   },
   methods: {
+    ...mapActions({
+      toggleLogin: 'global/toggleLogin'
+    }),
     showMenu () {
       this.isShowMenu = !this.isShowMenu
     }

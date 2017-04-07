@@ -39,6 +39,7 @@ const router = new VueRouter({
     { name: 'index', path: '/', component: Index },
     { name: 'trending', path: '/trending/:by', component: Index },
     { name: 'category', path: '/category/:id', component: Index },
+    { name: 'article', path: '/article/:id', component: lazyLoading('frontend/article'), meta: { scrollToTop: true } },
     { name: 'about', path: '/about', component: lazyLoading('frontend/about'), meta: { scrollToTop: true } },
     { path: '*', redirect: '/' }
   ]

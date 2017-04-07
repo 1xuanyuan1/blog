@@ -32,6 +32,19 @@ const actions = {
       })
     }
   },
+  async getArticleItem ({ commit, state, rootState: {route: { path, params: { id } }} }) {
+    if (path === state.item.path) {
+      global.progress = 100
+      return
+    }
+    const { data: { data, code } } = await api.get('frontend/article/item', { id, markdown: 1, cache: true })
+    if (data && code === 200) {
+      commit(types.FRONTEND_RECEIVE_ARTICLEITEM, {
+        data,
+        path
+      })
+    }
+  },
   async getTrending ({ commit, state }) {
     if (state.trending.length) return
     const { data: { data, code } } = await api.get('frontend/trending', { cache: true })
@@ -52,6 +65,11 @@ const mutations = {
       data: list, hasNext, hasPrev, page, path
     }
   },
+  [types.FRONTEND_RECEIVE_ARTICLEITEM] (state, {data, path}) {
+    state.item = {
+      data, path, isLoad: true
+    }
+  },
   [types.FRONTEND_RECEIVE_TRENDING] (state, list) {
     state.trending = list
   }
@@ -59,7 +77,8 @@ const mutations = {
 
 const getters = {
   articleList: (state) => state.lists,
-  trending: (state) => state.trending
+  trending: (state) => state.trending,
+  articleItem: (state) => state.item
 }
 
 export default {

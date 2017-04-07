@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import TrendingCard from 'components/TrendingCard'
-import AboutCard from 'components/AboutCard'
-const fetchInitialData = async store => {
+import TrendingCard from 'components/frontend/TrendingCard'
+import AboutCard from 'components/frontend/AboutCard'
+const fetchInitialData = async (store) => {
     await store.dispatch('frontend/article/getTrending')
 }
 export default {

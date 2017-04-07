@@ -5,18 +5,20 @@
         <article-card></article-card>
       </div>
       <div class="column main-right">
-        <topics-card></topics-card>
-        <trending-card></trending-card>
+        <topics-card key="topics-card"></topics-card>
+        <trending-card key="trending-card"></trending-card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ArticleCard from 'components/ArticleCard'
-import TopicsCard from 'components/TopicsCard'
-import TrendingCard from 'components/TrendingCard'
+import ArticleCard from 'components/frontend/ArticleCard'
+import TopicsCard from 'components/frontend/TopicsCard'
+import TrendingCard from 'components/frontend/TrendingCard'
 import { ssp } from 'utils'
+import { mapGetters } from 'vuex'
+import axios from 'axios'
 const fetchInitialData = async (store, config = { page: 1 }) => {
   const {params: {id, key, by}, path} = store.state.route
   const base = { ...config, limit: 10, id, key, by }
@@ -32,6 +34,11 @@ export default {
     ArticleCard,
     TopicsCard,
     TrendingCard
+  },
+  computed: {
+    ...mapGetters({
+      category: 'global/category/categoryList'
+    })
   },
   watch: {
     '$route'() {

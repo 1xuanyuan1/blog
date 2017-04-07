@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="card">
-    <div class="card-item" v-for="item in list" :key="item._id" @click="skip(item._id)">
+    <div class="card-item" v-for="item in list" :key="item._id" v-if="item.cate_num > 0" @click="skip(item._id)">
       <div class="card-item-left">
         <i class="iconfont icon-topics"></i>
         <div class="card-item-content">
@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     skip (id) {
-      console.log(id)
       this.$router.push({ name: 'category', params: { id } })
     }
   }

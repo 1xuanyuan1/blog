@@ -4,16 +4,22 @@
     <transition name="slide-fade">
       <router-view :key="key" class="view"></router-view>
     </transition>
+    <login-card v-show="global.showLoginModal"></login-card>
+    <register-card v-show="global.showRegisterModal"></register-card>
   </div>
 </template>
 
 <script>
-import Navbar from 'components/Navbar'
+import Navbar from 'components/common/Navbar'
+import LoginCard from  'components/frontend/LoginCard'
+import RegisterCard from  'components/frontend/RegisterCard'
 import NProgress from 'nprogress'
 import { mapGetters } from 'vuex'
 export default {
   components: {
-    Navbar
+    Navbar,
+    LoginCard,
+    RegisterCard
   },
   computed: {
     ...mapGetters({
@@ -43,7 +49,7 @@ export default {
 @import '~bulma';
 @import '~scss/base.scss';
 html,body{
-  background: #ebf0f0;
+  background: $bg-color;
 }
 .iconfont{
   margin-right: 8px;

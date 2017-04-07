@@ -12,26 +12,21 @@
           {{item.creat_date}}
         </p>
       </header>
-      <a class="card-title">
-        {{item.title}}
-      </a>
+      <router-link :to="`/article/${item._id}`" v-text="item.title" class="card-title"></router-link>
       <div class="card-content">
         <div class="content">
           {{item.content}}
         </div>
       </div>
-      <footer class="card-footer">
-        <a class="card-footer-item" v-for="it in operation">
-          <i class="iconfont" :class="`icon-${it.type}`"></i> {{item[it.key]}} {{it.name}}
-        </a>
-      </footer>
+      <item-action :item="item"></item-action>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Loading from 'components/Loading'
+import Loading from 'components/common/Loading'
+import ItemAction from './ItemAction'
 export default {
   name: 'article-card',
   computed: {
@@ -43,7 +38,8 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
+    ItemAction
   },
   data () {
     return {
@@ -94,16 +90,6 @@ export default {
     padding: $base-padding;
     &:hover{
       color: rgba(0, 209, 178, 0.6);
-    }
-  }
-  .card-footer{
-    border-top-color: $border-color;
-    .card-footer-item{
-      color: #7a7a7a;
-      border-right-color: $border-color;
-      &:hover{
-        color: #4a4a4a;
-      }
     }
   }
 }
