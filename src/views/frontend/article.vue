@@ -14,6 +14,7 @@
           </div>
           <item-action :item="article.data"></item-action>
         </div>
+        <comment-card></comment-card>
       </div>
       <div class="column main-right">
         <topics-card key="topics-card"></topics-card>
@@ -27,11 +28,12 @@
 import TopicsCard from 'components/frontend/TopicsCard'
 import TrendingCard from 'components/frontend/TrendingCard'
 import ItemAction from 'components/frontend/ItemAction'
+import CommentCard from 'components/frontend/CommentCard'
 import { mapGetters } from 'vuex'
 const fetchInitialData = async store => {
     store.dispatch('global/category/getCategoryList')
     store.dispatch('frontend/article/getTrending')
-    // store.dispatch(`global/comment/getCommentList`, { page: 1, limit: 5})
+    store.dispatch('global/comment/getCommentList', { page: 1, limit: 5 })
     await store.dispatch(`frontend/article/getArticleItem`)
 }
 export default {
@@ -40,6 +42,7 @@ export default {
   components: {
     TopicsCard,
     TrendingCard,
+    CommentCard,
     ItemAction
   },
   computed: {

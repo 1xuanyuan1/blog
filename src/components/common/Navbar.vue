@@ -22,14 +22,13 @@
       <span></span>
     </span>
     <div class="nav-right nav-menu" :class="{'is-active': isShowMenu}">
-      <router-link  class="nav-item is-tab is-hidden-tablet"
+      <a class="nav-item is-tab is-hidden-tablet"
           v-for="item in menus"
-          :to="item.path"
           :key="item.icon"
-          @click="changeMenu(item)"
+          @click="skip(item.path)"
           :class="{'is-active': item.path === activeMenu}">
         <i class="iconfont" :class="`icon-${item.icon}`"></i>{{item.name}}
-      </router-link>
+      </a>
       <a class="nav-item" v-if="username">
         <figure class="image logo" style="margin-right: 8px;">
           <img src="~assets/img/logo.png">
@@ -86,6 +85,10 @@ export default {
     }),
     showMenu () {
       this.isShowMenu = !this.isShowMenu
+    },
+    skip (path) {
+      this.isShowMenu = false
+      this.$router.push(path)
     }
   }
 }

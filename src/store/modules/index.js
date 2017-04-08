@@ -1,5 +1,7 @@
 import global from './global'
 import globalCategory from './global-category'
+import globalComment from './global-comment'
+
 import frontendArticle from './frontend-article'
 
 export default {
@@ -13,7 +15,8 @@ export default {
     namespaced: true,
     ...global,
     modules: {
-      category: globalCategory
+      category: globalCategory,
+      comment: globalComment
     }
   }
 }

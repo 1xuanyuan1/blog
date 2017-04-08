@@ -51,6 +51,9 @@ const actions = {
     if (data && code === 200) {
       commit(types.FRONTEND_RECEIVE_TRENDING, data.list)
     }
+  },
+  async modifyLikeStatus ({ commit }, {id, status}) {
+    commit(types.FRONTEND_MODIFY_LIKESTATUS, {id, status})
   }
 }
 
@@ -72,6 +75,19 @@ const mutations = {
   },
   [types.FRONTEND_RECEIVE_TRENDING] (state, list) {
     state.trending = list
+  },
+  [types.FRONTEND_MODIFY_LIKESTATUS] (state, {id, status}) {
+    if (state.item.data._id === id) {
+      if (status) state.item.data.like++
+      else state.item.data.like--
+      state.item.data.like_status = status
+    }
+    const obj = state.lists.data.find(item => item._id === id)
+    if (obj) {
+      if (status) obj.like++
+      else obj.like--
+      obj.like_status = status
+    }
   }
 }
 

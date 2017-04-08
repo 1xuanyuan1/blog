@@ -17,7 +17,6 @@ import AboutCard from 'components/frontend/AboutCard'
 const fetchInitialData = async (store) => {
     await store.dispatch('frontend/article/getTrending')
 }
-
 export default {
   name: 'frontend-about',
   prefetch: fetchInitialData,
@@ -33,3 +32,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .about{
+    padding: 12px;
+  }
+</style>

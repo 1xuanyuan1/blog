@@ -41,4 +41,7 @@ export default {
 .card-header-title{
   padding: 24px;
 }
+figure img{
+  border-radius: 50%;
+}
 </style>
