@@ -40,12 +40,12 @@
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-warning" @click="register">确定注册</button>
+          <button class="button is-warning" type="submit"><p>确定注册</p></button>
         </p>
       </div>
       <div class="field">
         <p class="control">
-          <button class="button is-info" type="button" @click.prevent="toLogin">直接登录</button>
+          <button class="button is-info" type="button" @click.prevent="toLogin"><p>直接登录</p></button>
         </p>
       </div>
     </form>
@@ -127,6 +127,10 @@ export default {
       width: 80%;
       .button{
         width: 100%;
+        p{
+          width: 100%;
+          text-align: center;
+        }
       }
     }
     .btn-close {

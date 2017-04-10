@@ -76,7 +76,7 @@ export default {
       return this.$route.fullPath
     },
     username () {
-      return cookies.get('username') || ''
+      return cookies.get('username') ? decodeURIComponent(cookies.get('username')) : ''
     }
   },
   methods: {

@@ -27,7 +27,7 @@
         <div class="media-content">
           <div class="content">
             <p>
-              <strong class="name">{{item.username}}</strong><br />
+              <strong class="name">{{decodeURIComponent(item.username)}}</strong><br />
               <span>{{item.content}}</span><br />
               <small class="time">{{item.creat_date}} <a @click="reply(item)">回复</a></small>
             </p>

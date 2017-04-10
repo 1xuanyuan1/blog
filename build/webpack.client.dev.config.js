@@ -39,6 +39,7 @@ module.exports = {
             filename: 'admin.html',
             template: 'src/template/admin.html',
             inject: true,
+            favicon: 'src/assets/img/logo.png'
         })
     ]
 }
